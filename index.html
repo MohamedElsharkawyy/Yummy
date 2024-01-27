@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="imgs/logo.png" />
+    <title>Yummy</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div class="loading">
+      <span class="loader"></span>
+    </div>
+
+    <div class="mainpage">
+      <aside class="d-flex aside">
+        <div class="slider d-flex flex-column justify-content-between">
+          <ul class="links list-unstyled p-0 m-0 overflow-hidden">
+            <li class="search position-relative">Search</li>
+            <div class="searchArea">
+              <div class="mb-2">
+                <input type="text"placeholder="By Name"class="form-control"id="searchByName"onkeyup="searchByName(this.value)"/>
+              </div>
+              <div class="mb-2">
+                <input type="text"placeholder="By First Letter"maxlength="1"class="form-control"id="searchByFirstLetter"onkeyup="searchByFirstLetter(this.value)"/>
+              </div>
+            </div>
+            <li class="category position-relative">Category</li>
+            <li class="area position-relative">Area</li>
+            <li class="ingredients position-relative">Ingredients</li>
+            <li class="contact position-relative">Contact Us</li>
+          </ul>
+          <div class="copyInfo">
+            <ul class="list-unstyled p-0 m-0 d-flex gap-2">
+              <li><i class="fa-brands fa-facebook"></i></li>
+              <li><i class="fa-solid fa-globe"></i></li>
+              <li><i class="fa-solid fa-share-nodes"></i></li>
+            </ul>
+            <p>Copyright Â© 2019 All Rights Reserved.</p>
+          </div>
+        </div>
+        <nav class="sideBox p-2 bg-white">
+          <div>
+            <a href="index.html"
+              ><img src="imgs/logo.png" class="img-fluid" alt=""
+            /></a>
+          </div>
+          <div class="menuIcon">
+            <i class="fa-solid fa-bars fa-2x"></i>
+          </div>
+          <ul class="list-unstyled p-0 m-0">
+            <li><i class="fa-solid fa-globe"></i></li>
+            <li>
+              <i class="fa-solid fa-share-nodes"></i>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="mainContent py-3">
+        <div class="container">
+          <div class="row g-3"></div>
+
+        </div>
+      </div>
+    </div>
+    <script src="js/all.min.js"></script>
+    <script src="js/Jquery.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
