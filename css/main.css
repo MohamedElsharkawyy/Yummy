@@ -53,17 +53,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.sideBox .menuIcon {
-  cursor: pointer;
-}
-@media (max-width: 767px) {
-  .sideBox {
-    width: 40px;
-  }
-  .sideBox .menuIcon svg {
-    font-size: 16px !important;
-  }
-}
+
 .sideBox li {
   cursor: pointer;
 }
