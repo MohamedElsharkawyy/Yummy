@@ -2,7 +2,7 @@ const mainContentArea = document.querySelector(".mainContent .container .row");
 const nameInput = document.getElementById("searchByName");
 const letterInput = document.getElementById("searchByFirstLetter");
 $(document).ready(() => {
-  $(".loading").fadeOut(500, () => {
+  $(".loading-screen").fadeOut(500, () => {
     $("body").css({
       overflow: "auto",
     });
@@ -28,7 +28,7 @@ $(document).ready(() => {
     $(".searchArea").slideToggle(300);
   });
   $(".category").click(async () => {
-    $(".loading").fadeIn(300);
+    $(".loading-screen").fadeIn(300);
     const request = await fetch(
       "https://www.themealdb.com/api/json/v1/1/categories.php"
     );
@@ -36,11 +36,11 @@ $(document).ready(() => {
     const allCategories = response.categories;
     displayAllCategorycards(allCategories);
     CloseNavbar();
-    $(".loading").fadeOut(300);
+    $(".loading-screen").fadeOut(300);
   });
   
   $(".ingredients").click(async () => {
-    $(".loading").fadeIn(300);
+    $(".loading-screen").fadeIn(300);
     const request = await fetch(
       "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
     );
@@ -48,10 +48,10 @@ $(document).ready(() => {
     const allIngrediants = response.meals;
     displayAllIngrediantsCards(allIngrediants);
     CloseNavbar();
-    $(".loading").fadeOut(300);
+    $(".loading-screen").fadeOut(300);
   });
   $(".area").click(async () => {
-    $(".loading").fadeIn(300);
+    $(".loading-screen").fadeIn(300);
     const request = await fetch(
       "https://www.themealdb.com/api/json/v1/1/list.php?a=list"
     );
@@ -59,7 +59,7 @@ $(document).ready(() => {
     const allAreas = response.meals;
     displayAllAreasCards(allAreas);
     CloseNavbar();
-    $(".loading").fadeOut(300);
+    $(".loading-screen").fadeOut(300);
   });
   $(".contact").click(() => {
     showContactele();
@@ -117,24 +117,24 @@ function displayCategoryMeals(allMeals) {
   return (mainContentArea.innerHTML = cartoons);
 }
 async function getMealsByCategory(cateName) {
-  $(".loading").fadeIn(300);
+  $(".loading-screen").fadeIn(300);
   const request = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?c=${cateName}`
   );
   const response = await request.json();
   const allCategoryMeals = response.meals;
   displayCategoryMeals(allCategoryMeals);
-  $(".loading").fadeOut(300);
+  $(".loading-screen").fadeOut(300);
 }
 async function getMealDetails(mealId) {
-  $(".loading").fadeIn(300);
+  $(".loading-screen").fadeIn(300);
   const request = await fetch(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
   );
   const response = await request.json();
   const mealDetails = response.meals[0];
   displayMealDetailsPage(mealDetails);
-  $(".loading").fadeOut(300);
+  $(".loading-screen").fadeOut(300);
 }
 function displayMealDetailsPage(meal) {
   let ingredients = ``;
@@ -204,14 +204,14 @@ function displayAllIngrediantsCards(ingrediants) {
   mainContentArea.innerHTML = cartoona;
 }
 async function getMealsByMainIngrediants(mainIngrediant) {
-  $(".loading").fadeIn(300);
+  $(".loading-screen").fadeIn(300);
   const request = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mainIngrediant}`
   );
   const response = await request.json();
   const data = response.meals;
   displayCategoryMeals(data);
-  $(".loading").fadeOut(300);
+  $(".loading-screen").fadeOut(300);
 }
 
 function displayAllAreasCards(areas) {
@@ -230,7 +230,7 @@ function displayAllAreasCards(areas) {
   mainContentArea.innerHTML = cartoona;
 }
 async function getMealsByAreaName(areaName) {
-  $(".loading").fadeIn(300);
+  $(".loading-screen").fadeIn(300);
   const request = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?a=${areaName}`
   );
@@ -238,28 +238,28 @@ async function getMealsByAreaName(areaName) {
   const data = response.meals;
   console.log(data);
   displayCategoryMeals(data);
-  $(".loading").fadeOut(300);
+  $(".loading-screen").fadeOut(300);
 }
 
 async function searchByName(value) {
-  $(".loading").fadeIn(300);
+  $(".loading-screen").fadeIn(300);
   const request = await fetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`
   );
   const response = await request.json();
   const data = response.meals;
   displayCategoryMeals(data);
-  $(".loading").fadeOut(300);
+  $(".loading-screen").fadeOut(300);
 }
 async function searchByFirstLetter(value) {
-  $(".loading").fadeIn(300);
+  $(".loading-screen").fadeIn(300);
   const request = await fetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?f=${value}`
   );
   const response = await request.json();
   const data = response.meals;
   displayCategoryMeals(data);
-  $(".loading").fadeOut(300);
+  $(".loading-screen").fadeOut(300);
 }
 
 function showContactele() {
@@ -267,20 +267,17 @@ function showContactele() {
   <div class="row mb-3">
   <div class="col">
     <input type="text" class="form-control" placeholder="Enter Your Name" aria-label="First name" id="nameInput" onkeyup="runvalidations()">
-    <div id="nameAlert" class=" alert alert-danger mt-3 d-none">Name Field: 
-    <ul>
-      <li>* Required</li>
-      <li>* Special characters and numbers not allowed</li>
-      <li>* Can't Be less Than 4 Chars</li>
+    <div id="nameAlert" class=" alert alert-danger mt-3 d-none">
+      <li> Special characters and numbers not allowed</li>
+      <li> Can't Be less Than 4 Chars</li>
     </ul>
     </div>
   </div>
   <div class="col">
     <input type="email" class="form-control" placeholder="Your Email" aria-label="Enter Your Email" id="emailInput" onkeyup="runvalidations()">
-    <div id="emailAlert" class=" alert alert-danger mt-3 d-none">Email Field: 
+    <div id="emailAlert" class=" alert alert-danger mt-3 d-none"> 
     <ul>
-      <li>* Required</li>
-      <li>* Must Be valid Email</li>
+      <li> Must Be valid Email</li>
     </ul>
     </div>
   </div>
@@ -288,19 +285,17 @@ function showContactele() {
 <div class="row mb-3">
   <div class="col">
     <input type="number" class="form-control" placeholder="Enter Your Phone" aria-label="Your Phone" id="phoneInput" onkeyup="runvalidations()">
-    <div id="phoneAlert" class=" alert alert-danger mt-3 d-none">Phone Field: 
+    <div id="phoneAlert" class=" alert alert-danger mt-3 d-none"> 
     <ul>
-      <li>* Required</li>
-      <li>* Enter valid Phone Number/li>
+      <li> Enter valid Phone Number/li>
     </ul>
     </div>
   </div>
   <div class="col">
     <input type="number" class="form-control" placeholder="Enter Your Age" aria-label="Your Age" id="ageInput" onkeyup="runvalidations()">
-    <div id="ageAlert" class=" alert alert-danger mt-3 d-none">Age Field: 
+    <div id="ageAlert" class=" alert alert-danger mt-3 d-none"> 
     <ul>
-      <li>* Required</li>
-      <li>* Enter valid age</li>
+      <li> Enter valid age</li>
     </ul>
     </div>
   </div>
@@ -308,21 +303,19 @@ function showContactele() {
 <div class="row mb-3">
   <div class="col">
   <input type="password" class="form-control" placeholder="Your Password" aria-label="Enter Your Password" id="passwordInput" onkeyup="runvalidations()">
-  <div id="passwordAlert" class=" alert alert-danger mt-3 d-none">Password Field: 
+  <div id="passwordAlert" class=" alert alert-danger mt-3 d-none"> 
   <ul>
-    <li>* Required</li>
-    <li>* Must Contains Special Char and Numbers</li>
-    <li>* Can't Be Less Than 6 digits Or More Than 16 Digits</li>
+    <li> Must Contains Special Char and Numbers</li>
+    <li> Can't Be Less Than 6 digits Or More Than 16 Digits</li>
   </ul>
     </div>
   </div>
   <div class="col">
     <input type="password" class="form-control" placeholder="Your Password" aria-label="Repassword" id="RepasswordInput" onkeyup="runvalidations()">
-    <div id="RepasswordAlert" class=" alert alert-danger mt-3 d-none">Password Field: 
+    <div id="RepasswordAlert" class=" alert alert-danger mt-3 d-none"> 
     <ul>
-      <li>* Required</li>
-      <li>* Enter valid repassword</li>
-      <li>* Minimum eight characters, at least one letter and one number </li>
+      <li> Enter valid Repassword</li>
+      <li> Minimum eight characters, at least one letter and one number </li>
     </ul>
     </div>
   </div>
